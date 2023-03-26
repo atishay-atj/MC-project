@@ -20,4 +20,6 @@
     <string name="ForgetPassword">Forget Password?</string>
     <string name="noAccount">Don\'t Have An Account?</string>
     <string name="search">Search for your item...</string>
+    <string name="hey">Welcome...</string>
+    <string name="what">What do you want?</string>
 </resources>

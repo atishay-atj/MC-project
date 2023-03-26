@@ -24,4 +24,5 @@
     <string name="what">What do you want?</string>
     <string name="canteen">Canteen</string>
     <string name="phone">Phone no.</string>
+    <string name="productName">Product Name</string>
 </resources>

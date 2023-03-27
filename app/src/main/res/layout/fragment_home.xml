@@ -5,7 +5,7 @@
     android:id="@+id/nested"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3C3838"
+    android:background="#3c3838"
     tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout

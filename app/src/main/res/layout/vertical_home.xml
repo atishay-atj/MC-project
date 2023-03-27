@@ -4,17 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="20dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#3C3838">
 
         <ImageView
             android:id="@+id/food1"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_margin="30dp"
+
+            android:padding="20dp"
+
             android:scaleType="center"
             android:src="@drawable/paneer_sandwich"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +30,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint2"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="50dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="9dp"
             android:background="@drawable/round_bkg"

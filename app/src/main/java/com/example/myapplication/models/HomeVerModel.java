@@ -3,18 +3,18 @@ package com.example.myapplication.models;
 public class HomeVerModel {
     int image;
     String name;
-//    String price;
+    String price;
 
-//    public HomeVerModel(int image, String name, String price) {
-//        this.image = image;
-//        this.name = name;
-//        this.price = price;
-//    }
-    public HomeVerModel(int image, String name) {
+    public HomeVerModel(int image, String name, String price) {
         this.image = image;
         this.name = name;
-//    this.price = price;
+        this.price = price;
     }
+//    public HomeVerModel(int image, String name) {
+//        this.image = image;
+//        this.name = name;
+////    this.price = price;
+//    }
 
     public int getImage() {
         return image;
@@ -32,11 +32,11 @@ public class HomeVerModel {
         this.name = name;
     }
 
-//    public String getPrice() {
-//        return price;
-//    }
+    public String getPrice() {
+        return price;
+    }
 
-//    public void setPrice(String price) {
-//        this.price = price;
-//    }
+    public void setPrice(String price) {
+        this.price = price;
+    }
 }

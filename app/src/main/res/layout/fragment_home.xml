@@ -6,11 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3c3838"
-    tools:context=".ui.home.HomeFragment">
+
+    tools:context=".ui.home.HomeFragment"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="@drawable/foreground"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/welome"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="-148dp" />
+
 
 
         <EditText

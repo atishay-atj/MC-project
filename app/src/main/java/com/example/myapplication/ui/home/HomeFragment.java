@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Adapters.HomeHorAdapter;
 import com.example.myapplication.Adapters.HomeVerAdapter;
+import com.example.myapplication.Adapters.UpdateVertical;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 import com.example.myapplication.models.HomeHorModel;
@@ -22,12 +23,12 @@ import com.example.myapplication.models.HomeVerModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements UpdateVertical {
 
     RecyclerView homeHorizontalRec,homeVerticalRec;
-    List<HomeHorModel> homeHorModellist;
+    ArrayList<HomeHorModel> homeHorModellist;
     HomeHorAdapter homeHorAdapter;
-    List<HomeVerModel> homeVerModellist;
+    ArrayList<HomeVerModel> homeVerModellist;
     HomeVerAdapter homeVerAdapter;
     private FragmentHomeBinding binding;
 
@@ -41,12 +42,12 @@ public class HomeFragment extends Fragment {
 
         //horizontal Recycler view
         homeHorModellist = new ArrayList<>();
-        homeHorModellist.add(new HomeHorModel(R.drawable.restaurant,"canteen"));
-        homeHorModellist.add(new HomeHorModel(R.drawable.sign,"Bru Bakes"));
-        homeHorModellist.add(new HomeHorModel(R.drawable.snacks,"Bicano"));
+        homeHorModellist.add(new HomeHorModel(R.drawable.restaurant,"Canteen"));
+        homeHorModellist.add(new HomeHorModel(R.drawable.sign,"BruBakes"));
+        homeHorModellist.add(new HomeHorModel(R.drawable.dosa_icn,"Dosa"));
 
 
-        homeHorAdapter = new HomeHorAdapter(getActivity(),homeHorModellist);
+        homeHorAdapter = new HomeHorAdapter(this,getActivity(),homeHorModellist);
         homeHorizontalRec.setAdapter(homeHorAdapter);
         homeHorizontalRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         homeHorizontalRec.setHasFixedSize(true);
@@ -57,21 +58,21 @@ public class HomeFragment extends Fragment {
 //        final TextView textView = binding.textHome;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         homeVerModellist = new ArrayList<>();
-        homeVerModellist.add(new HomeVerModel(R.drawable.paneer_sandwich,"Paneer Sandwich"));
-        homeVerModellist.add(new HomeVerModel(R.drawable.aalo_sandwich,"Aalo sandwich"));
-        homeVerModellist.add(new HomeVerModel(R.drawable.butter_maggi,"butter maggi"));
-        homeVerModellist.add(new HomeVerModel(R.drawable.veg_maggi,"Veg maggi"));
-        homeVerModellist.add(new HomeVerModel(R.drawable.egg_maggi,"egg maggi"));
-        homeVerModellist.add(new HomeVerModel(R.drawable.plain_maggi,"Plain Maggi"));
-        homeVerModellist.add(new HomeVerModel(R.drawable.mixed_paratha,"Mixed paratha"));
-        homeVerModellist.add(new HomeVerModel(R.drawable.aalo_paratha,"Aalo paratha"));
-        homeVerModellist.add(new HomeVerModel(R.drawable.paneer_paratha,"paneer paratha"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.paneer_sandwich,"Paneer Sandwich","Rs.60"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.aalo_sandwich,"Aalo sandwich","Rs.40"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.butter_maggi,"butter maggi","Rs.35"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.veg_maggi,"Veg maggi","Rs.35"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.egg_maggi,"egg maggi","Rs.40"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.plain_maggi,"Plain Maggi","Rs.25"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.mixed_paratha,"Mixed paratha","Rs.30"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.aalo_paratha,"Aalo paratha","Rs.30"));
+//        homeVerModellist.add(new HomeVerModel(R.drawable.paneer_paratha,"paneer paratha","Rs.40"));
 
         homeVerAdapter = new HomeVerAdapter(getActivity(),homeVerModellist);
         homeVerticalRec.setAdapter(homeVerAdapter);
         homeVerticalRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
-        homeVerticalRec.setHasFixedSize(true);
-        homeVerticalRec.setNestedScrollingEnabled(false);
+//        homeVerticalRec.setHasFixedSize(true);
+//        homeVerticalRec.setNestedScrollingEnabled(false);
 
         return root;
     }
@@ -80,5 +81,13 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void callback(int position, ArrayList<HomeVerModel> list) {
+
+        homeVerAdapter = new HomeVerAdapter(getContext(),list);
+        homeVerAdapter.notifyDataSetChanged();
+        homeVerticalRec.setAdapter(homeVerAdapter);
     }
 }

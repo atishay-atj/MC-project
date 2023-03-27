@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 //            Intent intent = new Intent(this, HomeFragment.class);
 //            startActivity(intent);
 //            Bundle bundle = new Bundle();
+            b1.setVisibility(View.GONE);
             if(getSupportFragmentManager().getFragments()!=null && getSupportFragmentManager().getFragments().size()>0)
             {
                 for(int i=0;i<getSupportFragmentManager().getFragments().size();i++)

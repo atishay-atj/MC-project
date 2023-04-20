@@ -25,8 +25,7 @@
             tools:layout_editor_absoluteY="-148dp" />
 
 
-
-        <androidx.appcompat.widget.SearchView
+        <EditText
             android:id="@+id/searchviewid"
             android:layout_width="300dp"
             android:layout_height="48dp"

@@ -50,7 +50,7 @@
 
 
                 <TextView
-                    android:id="@+id/price"
+                    android:id="@+id/Quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -59,6 +59,15 @@
                     android:padding="5sp"
 
                     android:singleLine="true"
+                    android:text="@string/quantity"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="145dp"
                     android:text="@string/Total"
                     android:textStyle="bold" />
 

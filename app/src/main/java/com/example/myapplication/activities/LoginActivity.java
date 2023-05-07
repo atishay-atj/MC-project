@@ -76,9 +76,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,10 +86,6 @@ import android.widget.Toast;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.home.HomeFragment;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -117,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         // auth=FirebaseAuth.getInstance();
         phoneno = findViewById(R.id.editTextTextPersonName8);
         password = findViewById(R.id.editTextTextPersonName9);
-        signIn = findViewById(R.id.button8);
+        signIn = findViewById(R.id.redirect1);
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override

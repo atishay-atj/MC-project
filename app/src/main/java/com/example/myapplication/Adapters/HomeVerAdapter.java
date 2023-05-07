@@ -2,6 +2,8 @@ package com.example.myapplication.Adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,11 +64,61 @@ public class HomeVerAdapter extends RecyclerView.Adapter<HomeVerAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final String mName = list.get(position).getName();
         final String mPrice = list.get(position).getPrice();
+//        if(mName=="Aalo Paratha")
+//        {
+//            final String mImage = String.valueOf(list.get(position).getImage());
+//            try {
+//                URL imageUrl = new URL(mImage);
+//                HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+//                conn.connect();
+//                InputStream inputStream = conn.getInputStream();
+//                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+//                holder.imageView.setImageBitmap(bitmap);
+//            }catch (Exception e)
+//            {
+//                e.printStackTrace();
+//            }
+//
+//        }
+//        else {
+            final int mImage = list.get(position).getImage();
 
-        final int mImage = list.get(position).getImage();
+//        }
         holder.imageView.setImageResource(list.get(position).getImage());
         holder.name.setText(list.get(position).getName());
         holder.price.setText(list.get(position).getPrice());
+        df.child("items").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+//                    Toast.makeText(context, itemSnapshot.getKey(), Toast.LENGTH_SHORT).show();
+                    String itemName = itemSnapshot.getKey();
+                    if(itemName!=null) {
+                        DataSnapshot availabilitySnapshot = itemSnapshot.child("available");
+
+                        if (availabilitySnapshot.exists() && availabilitySnapshot.getValue() != null) {
+                            int availability = availabilitySnapshot.getValue(Integer.class);
+                            if (mName.equals(itemName) && availability == 0) {
+                                holder.itemView.setEnabled(false);
+                                holder.itemView.setAlpha(0.5f); // Set lower opacity
+                                holder.price.setText("Unavailable");
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+//        HomeVerModel model = list.get(position);
+//
+//        holder.itemView.setEnabled(model.isEnabled());
+//        holder.itemView.setClickable(model.isEnabled());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

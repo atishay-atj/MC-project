@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,11 +31,14 @@ import java.util.List;
 public class HomeFragment extends Fragment implements UpdateVertical {
     ImageView profile;
     RecyclerView homeHorizontalRec,homeVerticalRec;
+    private SearchView searchView;
     ArrayList<HomeHorModel> homeHorModellist;
     HomeHorAdapter homeHorAdapter;
     ArrayList<HomeVerModel> homeVerModellist;
     HomeVerAdapter homeVerAdapter;
     private FragmentHomeBinding binding;
+
+
 
     @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,6 +48,8 @@ public class HomeFragment extends Fragment implements UpdateVertical {
         View root  = inflater.inflate(R.layout.fragment_home,container,false);
         homeHorizontalRec= root.findViewById(R.id.horizontal_home1);
         homeVerticalRec= root.findViewById(R.id.vertical_home1);
+//        searchView = root.findViewById(R.id.editTextTextPersonName4);
+
         profile=root.findViewById(R.id.profileViewer);
 
         profile.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +95,9 @@ public class HomeFragment extends Fragment implements UpdateVertical {
 
         return root;
     }
+
+
+
 
     @Override
     public void onDestroyView() {

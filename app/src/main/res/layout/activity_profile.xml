@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical"
-    android:background="#FDF8F8">
+    android:background="@drawable/side_nav_bar">
+
+
+
+
+
 
 
     <androidx.cardview.widget.CardView
@@ -16,6 +20,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
+
         app:cardCornerRadius="16dp"
         app:cardElevation="10dp">
 
@@ -25,9 +30,6 @@
             android:layout_height="match_parent"
             android:padding="16dp">
 
-            <!-- Left side text boxes -->
-
-            <!-- Right side image icon -->
 
             <TextView
                 android:id="@+id/text1"
@@ -37,9 +39,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="23dp"
                 android:layout_marginTop="34dp"
-                android:text="kush jain"
+                android:text="S T C"
                 android:textAlignment="center"
-                android:textColor="#000"
+
                 android:textSize="24sp" />
 
             <Button
@@ -50,9 +52,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="33dp"
                 android:layout_marginBottom="20dp"
-                android:background="#ffffff"
+
                 android:text="@string/act"
-                android:textColor="#D32F2F">
+                >
 
 
             </Button>
@@ -64,15 +66,17 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="109dp"
-                android:shape="ring"
-                android:background="@drawable/profileicon"
+                android:padding="10dp"
+
+
                 android:scaleType="centerCrop"
-                android:src="@drawable/person" />
+                android:src="@drawable/user" />
 
         </RelativeLayout>
 
 
     </androidx.cardview.widget.CardView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,6 +87,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="180dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
@@ -92,7 +97,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="16dp"
+
+                >
 
 
                 <TextView
@@ -137,7 +144,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="16dp"
+                >
 
 
                 <TextView

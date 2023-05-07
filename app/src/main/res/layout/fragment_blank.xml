@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CartActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/HomeScreenCardView2"
+        android:layout_width="177dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="228dp"
+        android:layout_weight="2"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/stepCounterAnim"
+            android:layout_width="match_parent"
+            android:layout_height="138dp"
+            android:layout_marginLeft="7sp"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/emptycart"
+            app:lottie_repeatCount="10" />
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/redirect1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:layout_marginBottom="140dp"
+        android:background="@drawable/button_bkg"
+        android:padding="14dp"
+        android:text="Back To Home"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

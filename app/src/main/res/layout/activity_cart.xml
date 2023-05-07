@@ -9,17 +9,17 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:name="com.example.myapplication.ui.cart.EmptyCartFragment"
+        android:name="com.example.myapplication.activities.BlankFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        tools:layout="@layout/fragment_empty_cart" />
+        tools:layout="@layout/fragment_blank" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.myapplication.ui.cart.CartFragment"
+        android:name="com.example.myapplication.activities.MyCartFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_my_cart" />
 
 </LinearLayout>

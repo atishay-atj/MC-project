@@ -3,18 +3,24 @@ package com.example.myapplication.models;
 public class CartModel {
     int image;
     String name;
-    String product_name;
+    String quantity;
     String price;
 
 
-    public CartModel(int image, String name, String price) {
+    public CartModel(int image, String name, String quantity, String price) {
         this.image = image;
         this.name = name;
+        this.quantity = quantity;
         this.price = price;
-
-
     }
 
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
 
     public int getImage() {
         return image;

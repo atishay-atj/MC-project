@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.myapplication.activities.CartActivity;
 import com.example.myapplication.activities.MyCartFragment;
 import com.example.myapplication.ui.home.HomeFragment;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,18 +53,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
+////
+//                Bundle bundle = new Bundle();
 //
-                Bundle bundle = new Bundle();
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                MyCartFragment firstFragment = new MyCartFragment();
+//                fragmentTransaction.replace(R.id.content_mainn,firstFragment);
+////                fragmentTransaction.addToBackStack("fragmentStack");
+//                fragmentTransaction.commit();
+//
+//                firstFragment.setArguments(bundle);
+                Snackbar.make(view, "Opening Cart", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
 
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                MyCartFragment firstFragment = new MyCartFragment();
-                fragmentTransaction.replace(R.id.content_mainn,firstFragment);
-//                fragmentTransaction.addToBackStack("fragmentStack");
-                fragmentTransaction.commit();
-
-                firstFragment.setArguments(bundle);
-
+                Intent intent = new Intent(view.getContext(), CartActivity.class);
+                startActivity(intent);
             }
         });
 

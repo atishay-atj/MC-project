@@ -1,8 +1,13 @@
 package com.example.myapplication.ui.home;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +29,21 @@ import com.example.myapplication.activities.ProfileActivity;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 import com.example.myapplication.models.HomeHorModel;
 import com.example.myapplication.models.HomeVerModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements UpdateVertical {
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    DatabaseReference df=database.getReference();
+
+
     ImageView profile;
     RecyclerView homeHorizontalRec,homeVerticalRec;
     private SearchView searchView;
@@ -37,17 +52,52 @@ public class HomeFragment extends Fragment implements UpdateVertical {
     ArrayList<HomeVerModel> homeVerModellist;
     HomeVerAdapter homeVerAdapter;
     private FragmentHomeBinding binding;
-
-
-
+    TextView welcome;
+    String fullName="";
+    SearchView sv;
+    String uniqueId;
     @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 //        HomeViewModel homeViewModel =
 //                new ViewModelProvider(this).get(HomeViewModel.class);
         View root  = inflater.inflate(R.layout.fragment_home,container,false);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE);
+        uniqueId = sharedPreferences.getString("uniqueId", "");
+
+//        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                filter(newText);
+//                return true;
+//            }
+//        });
+        df.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    fullName = snapshot.child("fullname").getValue(String.class);
+                } else {
+                    fullName="";
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
+
         homeHorizontalRec= root.findViewById(R.id.horizontal_home1);
         homeVerticalRec= root.findViewById(R.id.vertical_home1);
+        welcome=root.findViewById(R.id.textView10);
+        welcome.setText("Welcome..."+fullName);
 //        searchView = root.findViewById(R.id.editTextTextPersonName4);
 
         profile=root.findViewById(R.id.profileViewer);
@@ -112,4 +162,15 @@ public class HomeFragment extends Fragment implements UpdateVertical {
         homeVerAdapter.notifyDataSetChanged();
         homeVerticalRec.setAdapter(homeVerAdapter);
     }
+
+//    public void filter(String text)
+//    {
+//        if(text!=null)
+//        {
+//            homeHorAdapter.setfilter(text);
+//        }
+//        else {
+//            System.out.println("hello");
+//        }
+//    }
 }

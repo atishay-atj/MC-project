@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.myapplication.R;
 import com.example.myapplication.models.HomeHorModel;
 import com.example.myapplication.models.HomeVerModel;
@@ -42,7 +43,7 @@ public class HomeVerAdapter extends RecyclerView.Adapter<HomeVerAdapter.ViewHold
     private BottomSheetDialog bottomSheetDialog;
     Context context;
     ArrayList<HomeVerModel> list;
-
+    LottieAnimationView stepCounterAnim;
     //
     String uniqueId;
 
@@ -127,8 +128,9 @@ public class HomeVerAdapter extends RecyclerView.Adapter<HomeVerAdapter.ViewHold
                 ImageView bottomImg = sheetView.findViewById(R.id.bottom_img);
                 TextView bottomName = sheetView.findViewById(R.id.bottom_name);
                 TextView bottomPrice = sheetView.findViewById(R.id.bottom_price);
+                stepCounterAnim = sheetView.findViewById(R.id.stepCounterAnim);
 
-                sheetView.findViewById(R.id.add_to_cart).setOnClickListener(new View.OnClickListener() {
+                stepCounterAnim.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context,"Added to a Cart",Toast.LENGTH_SHORT).show();

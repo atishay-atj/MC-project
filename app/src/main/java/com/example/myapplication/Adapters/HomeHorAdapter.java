@@ -47,7 +47,7 @@ public class HomeHorAdapter extends RecyclerView.Adapter<HomeHorAdapter.ViewHold
     boolean select=true;
     int row_index = -1;
     HomeHorAdapter homeHorAdapter;
-
+String text=null;
 
     public HomeHorAdapter(UpdateVertical updateVertical, Activity activity, ArrayList<HomeHorModel> list) {
         this.updateVertical = updateVertical;
@@ -57,7 +57,10 @@ public class HomeHorAdapter extends RecyclerView.Adapter<HomeHorAdapter.ViewHold
         uniqueId = sharedPreferences.getString("uniqueId", "");
     }
 
-
+    public void setfilter(String text)
+    {
+        this.text=text;
+    }
 
     @NonNull
     @Override
@@ -151,6 +154,8 @@ public class HomeHorAdapter extends RecyclerView.Adapter<HomeHorAdapter.ViewHold
                     homeVerModels.add(new HomeVerModel(R.drawable.non_veg_pasta,"Non Veg Pasta","Rs.100"));
                     homeVerModels.add(new HomeVerModel(R.drawable.masala_soda,"Masala Soda","Rs.65"));
                     homeVerModels.add(new HomeVerModel(R.drawable.fresh_lime_soda,"Fresh Lime Soda","Rs.65"));
+
+
 
                     updateVertical.callback(position,homeVerModels);
                 }

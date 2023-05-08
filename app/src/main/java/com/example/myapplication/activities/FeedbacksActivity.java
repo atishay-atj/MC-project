@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListView;
 
 import com.example.myapplication.Adapters.FeedbackAdapter;
 import com.example.myapplication.R;
@@ -36,23 +35,23 @@ public class FeedbacksActivity extends AppCompatActivity {
 
         recyclerViewFeedbacks = findViewById(R.id.recycler_view_feedbacks);
         // Add a listener to fetch the feedback items from Firebase and update the RecyclerView
-        databaseReference.child("feedbacks").addListenerForSingleValueEvent(new ValueEventListener(){
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Feedback> feedbackItems = new ArrayList<>();
-                for (DataSnapshot feedbackSnapshot : dataSnapshot.getChildren()) {
-                    Feedback feedbackItem = feedbackSnapshot.getValue(Feedback.class);
-                    feedbackItems.add(feedbackItem);
-                }
-                adapter.setFeedbackItems(feedbackItems);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.e("FeedbacksActivity", "Error fetching feedbacks", databaseError.toException());
-            }
-        });
-        //adapter = new FeedbackAdapter(getFeedbackItems()); // If has to make static
+//        databaseReference.child("feedbacks").addListenerForSingleValueEvent(new ValueEventListener(){
+////            @Override
+////            public void onDataChange(DataSnapshot dataSnapshot) {
+////                List<Feedback> feedbackItems = new ArrayList<>();
+////                for (DataSnapshot feedbackSnapshot : dataSnapshot.getChildren()) {
+////                    Feedback feedbackItem = feedbackSnapshot.getValue(Feedback.class);
+////                    feedbackItems.add(feedbackItem);
+////                }
+////                adapter.setFeedbackItems(feedbackItems);
+////            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Log.e("FeedbacksActivity", "Error fetching feedbacks", databaseError.toException());
+//            }
+//        });
+        adapter = new FeedbackAdapter(getFeedbackItems()); // If has to make static
         recyclerViewFeedbacks.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewFeedbacks.setAdapter(adapter);
     }

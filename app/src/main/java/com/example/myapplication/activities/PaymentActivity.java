@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.OrderDetails.OrderActivity;
+import com.example.myapplication.OrderPlaced;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -74,7 +76,7 @@ public class PaymentActivity extends AppCompatActivity {
            public void onClick(View view) {
                if(Integer.parseInt(BalanceLeft)>=totalAmount)
                {
-                   Toast.makeText(PaymentActivity.this, "Order Successful.", Toast.LENGTH_SHORT).show();
+//                   Toast.makeText(PaymentActivity.this, "Order Successful.", Toast.LENGTH_SHORT).show();
                    df.child("users").child(uniqueId).child("balance").setValue(String.valueOf(Integer.parseInt(BalanceLeft)-totalAmount));
 
                    df.child("orderDetail").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -114,6 +116,9 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                               });
+
+                              Intent intent=new Intent(PaymentActivity.this, OrderPlaced.class);
+                              startActivity(intent);
 
                        }
 

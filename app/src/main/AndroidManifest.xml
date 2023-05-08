@@ -12,10 +12,22 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".OrderPlaced"
+            android:exported="false" />
+        <activity
+            android:name=".OrderDetails.OrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.FeedbacksActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.PaymentActivity"
             android:exported="false" />
         <activity
             android:name=".activities.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EmptyCartActivity"
             android:exported="false" />
         <activity
             android:name=".activities.AddBalanceActivity"

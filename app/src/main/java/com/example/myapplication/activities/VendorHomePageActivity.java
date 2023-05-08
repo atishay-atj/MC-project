@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.OrderDetails.OrderActivity;
 import com.example.myapplication.R;
 
 
@@ -53,7 +54,8 @@ public class VendorHomePageActivity extends AppCompatActivity {
         curr_orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(VendorHomePageActivity.this, OrderActivity.class);
+                startActivity(intent);
 
                 open_menu.setVisibility(View.GONE);
                 curr_orders.setVisibility(View.GONE);
@@ -78,7 +80,8 @@ public class VendorHomePageActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            Intent intent=new Intent(VendorHomePageActivity.this,FeedbacksActivity.class);
+            startActivity(intent);
 
                 open_menu.setVisibility(View.GONE);
                 curr_orders.setVisibility(View.GONE);

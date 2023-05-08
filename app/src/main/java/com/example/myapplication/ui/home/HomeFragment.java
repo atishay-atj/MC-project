@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -53,18 +54,21 @@ public class HomeFragment extends Fragment implements UpdateVertical {
     HomeVerAdapter homeVerAdapter;
     private FragmentHomeBinding binding;
     TextView welcome;
-    String fullName="";
     SearchView sv;
     String uniqueId;
-    @SuppressLint("MissingInflatedId")
+    String fullName="";
+
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
 //        HomeViewModel homeViewModel =
 //                new ViewModelProvider(this).get(HomeViewModel.class);
         View root  = inflater.inflate(R.layout.fragment_home,container,false);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE);
         uniqueId = sharedPreferences.getString("uniqueId", "");
-
+        welcome=root.findViewById(R.id.textView10);
 //        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
 //            public boolean onQueryTextSubmit(String query) {
@@ -80,11 +84,9 @@ public class HomeFragment extends Fragment implements UpdateVertical {
         df.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    fullName = snapshot.child("fullname").getValue(String.class);
-                } else {
-                    fullName="";
-                }
+                    fullName = snapshot.child(uniqueId).child("fullname").getValue(String.class);
+                    welcome.setText("Welcome.."+fullName);
+
             }
 
             @Override
@@ -96,8 +98,9 @@ public class HomeFragment extends Fragment implements UpdateVertical {
 
         homeHorizontalRec= root.findViewById(R.id.horizontal_home1);
         homeVerticalRec= root.findViewById(R.id.vertical_home1);
-        welcome=root.findViewById(R.id.textView10);
-        welcome.setText("Welcome..."+fullName);
+//        welcome=root.findViewById(R.id.textView10);
+//        welcome.setText("Welcome.."+fullName);
+
 //        searchView = root.findViewById(R.id.editTextTextPersonName4);
 
         profile=root.findViewById(R.id.profileViewer);
